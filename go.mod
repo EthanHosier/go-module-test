@@ -1,3 +1,3 @@
-module github.com/ethanhosier/go-module-test
+module github.com/EthanHosier/go-module-test
 
 go 1.21 
