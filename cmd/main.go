@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/ethanhosier/go-module-test/custom_math"
-	"github.com/ethanhosier/go-module-test/hello_world"
+	"github.com/ethanhosier/go-module-test/packages/custom_math"
+	"github.com/ethanhosier/go-module-test/packages/hello_world"
 )
 
 func main() {

@@ -1,0 +1,5 @@
+mode: set
+github.com/ethanhosier/go-module-test/cmd/main.go:10.13,20.2 6 0
+github.com/ethanhosier/go-module-test/packages/hello_world/hello.go:6.19,8.2 1 1
+github.com/ethanhosier/go-module-test/packages/hello_world/hello.go:11.38,13.2 1 1
+github.com/ethanhosier/go-module-test/packages/custom_math/math.go:4.24,6.2 1 1
