@@ -5,7 +5,7 @@ A simple Go module with custom math and hello world functionality.
 ## Installation
 
 ```bash
-go get github.com/ethanhosier/go-module-test
+go get github.com/EthanHosier/go-module-test
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ package main
 
 import (
     "fmt"
-    "github.com/ethanhosier/go-module-test/custom_math"
+    "github.com/EthanHosier/go-module-test/custom_math"
 )
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 package main
 
 import (
-    "github.com/ethanhosier/go-module-test/hello_world"
+    "github.com/EthanHosier/go-module-test/hello_world"
 )
 
 func main() {
