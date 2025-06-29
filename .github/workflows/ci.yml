@@ -1,53 +1,37 @@
-name: CI
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, develop ]
+    paths: ['go-service/**', '.github/workflows/go-ci.yml']
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, develop ]
+    paths: ['go-service/**', '.github/workflows/go-ci.yml']
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go-version: [1.19, 1.20, 1.21]
-
+    defaults:
+      run:
+        working-directory: ./go-service
+    
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Go ${{ matrix.go-version }}
-      uses: actions/setup-go@v4
-      with:
-        go-version: ${{ matrix.go-version }}
-
-    - name: Verify dependencies
-      run: go mod verify
-
-    - name: Run tests
-      run: go test -v ./...
-
-    - name: Run tests with coverage
-      run: go test -v -coverprofile=coverage.out ./...
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.out
-        flags: unittests
-        name: codecov-umbrella
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: '1.21'
-
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-        version: latest 
+        go-version: '1.24'
+        cache: true
+        
+    - name: Verify dependencies
+      run: go mod verify
+      
+    - name: Run tests with coverage
+      run: go test -v -coverprofile=coverage.out ./...
+      
+    - name: Build application
+      run: go build -v ./ %     
