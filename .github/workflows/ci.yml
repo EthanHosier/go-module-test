@@ -5,18 +5,14 @@ concurrency:
 on:
   push:
     branches: [ main, develop ]
-    paths: ['go-service/**', '.github/workflows/go-ci.yml']
   pull_request:
     branches: [ main, develop ]
-    paths: ['go-service/**', '.github/workflows/go-ci.yml']
+   
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./go-service
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
